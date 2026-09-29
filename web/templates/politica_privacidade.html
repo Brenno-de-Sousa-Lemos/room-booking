@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<div class="card">
+  <h2>Política de Privacidade</h2>
+  <p><em>Última atualização: versão 1.0</em></p>
+
+  <p>Esta Política de Privacidade descreve como o sistema Room-Booking coleta, utiliza e
+  protege os dados pessoais de seus usuários, em conformidade com a Lei Geral de Proteção
+  de Dados (Lei nº 13.709/2018 — LGPD).</p>
+
+  <h3>1. Controlador dos dados</h3>
+  <p>A instituição de ensino é a controladora dos dados pessoais tratados neste sistema.
+  <!-- Substitua pelos dados reais da instituição e do encarregado (DPO) -->
+  Contato do encarregado de dados: [preencher e-mail/telefone do DPO da instituição].</p>
+
+  <h3>2. Dados coletados</h3>
+  <ul>
+    <li>Dados cadastrais: nome, e-mail, matrícula/registro funcional, perfil de acesso;</li>
+    <li>Dados de uso: reservas realizadas, horários consultados;</li>
+    <li>Dados de auditoria: data, hora, endereço IP e ação realizada em cada acesso.</li>
+  </ul>
+
+  <h3>3. Finalidade do tratamento</h3>
+  <p>Os dados são utilizados exclusivamente para viabilizar o agendamento e a gestão de
+  salas de aula e auditórios, bem como para garantir a segurança e a rastreabilidade
+  das ações realizadas no sistema.</p>
+
+  <h3>4. Compartilhamento</h3>
+  <p>Os dados não são compartilhados com terceiros, exceto quando exigido por obrigação legal
+  ou regulatória, ou mediante integração expressamente informada ao usuário.</p>
+
+  <h3>5. Direitos do titular</h3>
+  <p>Nos termos do art. 18 da LGPD, o usuário pode solicitar, a qualquer momento:
+  confirmação da existência de tratamento, acesso aos dados, correção de dados incompletos
+  ou desatualizados, e eliminação dos dados tratados com consentimento (respeitadas as
+  obrigações legais de retenção).</p>
+
+  <h3>6. Retenção</h3>
+  <p>Os dados de cadastro são mantidos enquanto o usuário mantiver vínculo com a instituição.
+  Os registros de auditoria são retidos pelo prazo de [definir prazo, ex: 6 meses], podendo
+  ser mantidos por período maior quando exigido por obrigação legal.</p>
+
+  <h3>7. Segurança</h3>
+  <p>As senhas são armazenadas de forma criptografada, e o acesso ao sistema é protegido por
+  autenticação e controle de permissões por perfil de usuário.</p>
+
+  <p><a href="{{ url_for('termos.termo_uso') }}">Consulte também nosso Termo de Uso</a></p>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Room-Booking</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  {% if session.token %}
+  <header>
+    <strong>Room-Booking</strong>
+    <nav>
+      <a href="{{ url_for('dashboard.dashboard') }}">Início</a>
+      {% if session.perfil == 'ADMIN' %}<a href="{{ url_for('usuarios.usuarios') }}">Usuários</a>
+      <a href="{{ url_for('auditoria.logs') }}">Logs</a>{% endif %}
+      <span>{{ session.nome }} ({{ session.perfil }})</span>
+      <a href="{{ url_for('auth.logout') }}">Sair</a>
+    </nav>
+  </header>
+  {% endif %}
+  <main>
+    {% with msgs = get_flashed_messages(with_categories=true) %}
+      {% for cat, msg in msgs %}<div class="alert {{ cat }}">{{ msg }}</div>{% endfor %}
+    {% endwith %}
+    {% block conteudo %}{% endblock %}
+  </main>
+  <footer style="text-align:center; padding:16px; color:#777; font-size:0.9em;">
+    <a href="{{ url_for('termos.termo_uso') }}">Termo de Uso</a> ·
+    <a href="{{ url_for('termos.politica_privacidade') }}">Política de Privacidade</a>
+  </footer>
+</body>
+</html>

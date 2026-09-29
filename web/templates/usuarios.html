@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<h2>Usuários</h2>
+
+<form method="post" class="card grid">
+  <input name="nome" placeholder="Nome" required>
+  <input type="email" name="email" placeholder="E-mail" required>
+  <input type="password" name="senha" placeholder="Senha (mín. 8)" minlength="8" required>
+  <select name="perfil" required>
+    <option value="PROFESSOR">Professor/Assessor</option>
+    <option value="ALUNO">Aluno</option>
+    <option value="ADMIN">Administrador</option>
+  </select>
+  <input name="registro" placeholder="Matrícula / Registro">
+  <button type="submit">Cadastrar</button>
+</form>
+
+<table>
+  <thead><tr><th>Nome</th><th>E-mail</th><th>Perfil</th><th>Registro</th></tr></thead>
+  <tbody>
+  {% for u in usuarios %}
+    <tr><td>{{ u.nome }}</td><td>{{ u.email }}</td><td>{{ u.perfil }}</td><td>{{ u.registro or '-' }}</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

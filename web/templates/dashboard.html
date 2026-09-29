@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<h2>Olá, {{ session.nome }}!</h2>
+{% if session.perfil == 'ADMIN' %}
+  <p>Painel do administrador: gerencie usuários, salas e agendas.</p>
+  <a class="btn" href="{{ url_for('usuarios.usuarios') }}">Gerenciar usuários</a>
+{% elif session.perfil == 'PROFESSOR' %}
+  <p>Painel do professor: em breve você poderá reservar salas.</p>
+{% else %}
+  <p>Painel do aluno: em breve você poderá consultar suas salas.</p>
+{% endif %}
+{% endblock %}

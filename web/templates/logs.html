@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<h2>Logs de auditoria</h2>
+<table>
+  <thead>
+    <tr><th>Data/Hora</th><th>Usuário</th><th>Ação</th><th>Entidade</th><th>ID</th><th>Sucesso</th><th>IP</th></tr>
+  </thead>
+  <tbody>
+  {% for log in logs %}
+    <tr>
+      <td>{{ log.criado_em }}</td>
+      <td>{{ log.usuario_nome or '-' }}</td>
+      <td>{{ log.acao }}</td>
+      <td>{{ log.entidade }}</td>
+      <td>{{ log.entidade_id or '-' }}</td>
+      <td>{{ 'Sim' if log.sucesso else 'Não' }}</td>
+      <td>{{ log.ip_origem }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

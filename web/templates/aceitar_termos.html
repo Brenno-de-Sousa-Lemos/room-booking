@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<div class="card login">
+  <h2>Antes de continuar</h2>
+  <p>Para usar o Room-Booking, é necessário ler e aceitar os documentos abaixo.</p>
+
+  {% if erro %}<div class="alert erro">{{ erro }}</div>{% endif %}
+
+  <ul>
+    <li><a href="{{ url_for('termos.termo_uso') }}" target="_blank">Termo de Uso</a></li>
+    <li><a href="{{ url_for('termos.politica_privacidade') }}" target="_blank">Política de Privacidade</a></li>
+  </ul>
+
+  <form method="post">
+    <label style="display:flex; align-items:center; gap:8px;">
+      <input type="checkbox" name="aceite" style="width:auto;">
+      Li e concordo com o Termo de Uso e a Política de Privacidade
+    </label>
+    <button type="submit">Continuar</button>
+  </form>
+</div>
+{% endblock %}

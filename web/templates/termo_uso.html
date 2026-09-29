@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<div class="card">
+  <h2>Termo de Uso</h2>
+  <p><em>Última atualização: versão 1.0</em></p>
+
+  <p>Este Termo de Uso regula o acesso e a utilização do sistema Room-Booking,
+  destinado ao gerenciamento de reservas de salas de aula e auditórios da instituição de ensino.</p>
+
+  <h3>1. Cadastro e acesso</h3>
+  <p>O acesso ao sistema é restrito a administradores, professores/assessores e alunos
+  previamente cadastrados pela instituição. Cada usuário é responsável por manter em sigilo
+  suas credenciais de acesso (e-mail e senha).</p>
+
+  <h3>2. Uso adequado</h3>
+  <p>O sistema deve ser utilizado exclusivamente para fins de gerenciamento de reservas de
+  espaços da instituição. É vedado o uso para fins diversos dos previstos, incluindo tentativas
+  de acesso não autorizado a dados de outros usuários.</p>
+
+  <h3>3. Responsabilidades</h3>
+  <p>A instituição não se responsabiliza por reservas realizadas incorretamente por erro do
+  próprio usuário, mas garante o registro e a rastreabilidade de todas as ações realizadas no sistema.</p>
+
+  <h3>4. Alterações neste termo</h3>
+  <p>Este termo pode ser atualizado periodicamente. Em caso de alteração relevante, será
+  solicitado um novo aceite ao usuário.</p>
+
+  <p><a href="{{ url_for('termos.politica_privacidade') }}">Consulte também nossa Política de Privacidade</a></p>
+</div>
+{% endblock %}
