@@ -43,7 +43,7 @@ def registrar_log(acao, entidade):
                     ip_origem=request.remote_addr,
                 )
             except Exception:
-                pass  # log é auxiliar; nunca deve derrubar a aplicação
+                pass
             return resposta
         return wrapper
     return decorador

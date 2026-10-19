@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<h2>Reservas</h2>
+
+{% if pode_reservar %}
+<form method="post" action="{{ url_for('reservas.criar') }}" class="card grid">
+  {% if session.perfil == 'ADMIN' %}
+  <select name="professor_id">
+    <option value="">Eu mesmo (administrador)</option>
+    {% for p in professores %}<option value="{{ p.id }}">{{ p.nome }}</option>{% endfor %}
+  </select>
+  {% endif %}
+  <select name="sala_id" required>
+    <option value="">Sala / Auditório</option>
+    {% for s in salas %}<option value="{{ s.id }}">{{ s.nome }} ({{ s.capacidade }} lugares)</option>{% endfor %}
+  </select>
+  <input name="titulo" placeholder="Título (ex: Cálculo I)" maxlength="150" required>
+  <label>Início <input type="datetime-local" name="inicio" required></label>
+  <label>Fim <input type="datetime-local" name="fim" required></label>
+  <input name="descricao" placeholder="Descrição (opcional)">
+  <button type="submit">Reservar</button>
+</form>
+{% endif %}
+
+<p>
+  {% if pode_reservar %}<a href="{{ url_for('reservas.listar', minhas=1) }}">Só as minhas</a> ·{% endif %}
+  <a href="{{ url_for('reservas.listar', passadas=1) }}">Incluir passadas</a> ·
+  <a href="{{ url_for('reservas.listar') }}">Próximas</a>
+</p>
+
+<table>
+  <thead>
+    <tr><th>Início</th><th>Fim</th><th>Sala</th><th>Título</th><th>Responsável</th><th>Google</th><th></th></tr>
+  </thead>
+  <tbody>
+  {% for r in reservas %}
+    <tr>
+      <td>{{ r.inicio | datahora }}</td>
+      <td>{{ r.fim | datahora }}</td>
+      <td>{{ r.sala_nome }}</td>
+      <td>{{ r.titulo }}</td>
+      <td>{{ r.professor_nome }}</td>
+      <td>{{ 'Sincronizada' if r.sincronizado else 'Pendente' }}</td>
+      <td>
+        {% if r.pode_editar %}
+        <div class="acoes">
+          <a class="btn btn-sec" href="{{ url_for('reservas.editar', rid=r.id) }}">Editar</a>
+          <form method="post" action="{{ url_for('reservas.excluir', rid=r.id) }}"
+                onsubmit="return confirm('Cancelar esta reserva?');">
+            <button type="submit" class="btn-perigo">Cancelar</button>
+          </form>
+        </div>
+        {% endif %}
+      </td>
+    </tr>
+  {% else %}
+    <tr><td colspan="7">Nenhuma reserva encontrada.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -12,4 +12,8 @@ JWT_SECRET = os.getenv("JWT_SECRET")
 JWT_EXPIRA_MIN = 60
 
 TERMO_VERSAO = "1.0"
-POLITICA_VERSAO = "1.0"
+POLITICA_VERSAO = "1.1"
+
+GOOGLE_CREDENTIALS_FILE = os.getenv("GOOGLE_CREDENTIALS_FILE", "credentials/google-service-account.json")
+GOOGLE_CALENDAR_ID = os.getenv("GOOGLE_CALENDAR_ID")
+TIMEZONE = "America/Sao_Paulo"

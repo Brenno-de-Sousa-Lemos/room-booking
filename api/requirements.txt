@@ -3,3 +3,5 @@ mysql-connector-python==9.0.0
 PyJWT==2.9.0
 python-dotenv==1.0.1
 requests==2.32.3
+google-api-python-client==2.201.0
+google-auth==2.62.0

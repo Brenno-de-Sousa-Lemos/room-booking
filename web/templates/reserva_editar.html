@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<h2>Editar reserva</h2>
+
+<form method="post" class="card grid">
+  <select name="sala_id" required>
+    {% for s in salas %}
+      <option value="{{ s.id }}" {% if s.id == reserva.sala_id %}selected{% endif %}>{{ s.nome }}</option>
+    {% endfor %}
+  </select>
+  <input name="titulo" value="{{ reserva.titulo }}" maxlength="150" required>
+  <label>Início <input type="datetime-local" name="inicio" value="{{ reserva.inicio }}" required></label>
+  <label>Fim <input type="datetime-local" name="fim" value="{{ reserva.fim }}" required></label>
+  <input name="descricao" value="{{ reserva.descricao or '' }}" placeholder="Descrição (opcional)">
+  <div class="acoes">
+    <button type="submit">Salvar</button>
+    <a class="btn btn-sec" href="{{ url_for('reservas.listar') }}">Voltar</a>
+  </div>
+</form>
+{% endblock %}

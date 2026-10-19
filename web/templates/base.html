@@ -12,10 +12,15 @@
     <strong>Room-Booking</strong>
     <nav>
       <a href="{{ url_for('dashboard.dashboard') }}">Início</a>
-      {% if session.perfil == 'ADMIN' %}<a href="{{ url_for('usuarios.usuarios') }}">Usuários</a>
-      <a href="{{ url_for('auditoria.logs') }}">Logs</a>{% endif %}
+      <a href="{{ url_for('reservas.listar') }}">Reservas</a>
+      {% if session.perfil == 'ADMIN' %}
+        <a href="{{ url_for('salas.salas') }}">Salas</a>
+        <a href="{{ url_for('usuarios.usuarios') }}">Usuários</a>
+        <a href="{{ url_for('auditoria.logs') }}">Logs</a>
+      {% endif %}
       <span>{{ session.nome }} ({{ session.perfil }})</span>
       <a href="{{ url_for('auth.logout') }}">Sair</a>
+
     </nav>
   </header>
   {% endif %}

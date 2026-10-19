@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<h2>Salas e auditórios</h2>
+
+<form method="post" class="card grid">
+  <input name="nome" placeholder="Nome (ex: Sala 101)" required>
+  <select name="tipo" required>
+    <option value="SALA">Sala de aula</option>
+    <option value="AUDITORIO">Auditório</option>
+  </select>
+  <input type="number" name="capacidade" placeholder="Capacidade" min="1" required>
+  <input name="localizacao" placeholder="Localização (ex: Bloco B, 1º andar)">
+  <button type="submit">Cadastrar</button>
+</form>
+
+<table>
+  <thead><tr><th>Nome</th><th>Tipo</th><th>Capacidade</th><th>Localização</th><th></th></tr></thead>
+  <tbody>
+  {% for s in salas %}
+    <tr>
+      <td>{{ s.nome }}</td>
+      <td>{{ 'Auditório' if s.tipo == 'AUDITORIO' else 'Sala' }}</td>
+      <td>{{ s.capacidade }}</td>
+      <td>{{ s.localizacao or '-' }}</td>
+      <td>
+        <form method="post" action="{{ url_for('salas.excluir', sala_id=s.id) }}"
+              onsubmit="return confirm('Excluir esta sala?');">
+          <button type="submit" class="btn-perigo">Excluir</button>
+        </form>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

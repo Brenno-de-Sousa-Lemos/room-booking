@@ -17,3 +17,8 @@ th, td { padding: 10px; text-align: left; border-bottom: 1px solid #eee; }
 .alert { padding: 10px 14px; border-radius: 4px; margin-bottom: 14px; }
 .alert.erro { background: #fde2e2; color: #a33; }
 .alert.ok { background: #dff5e1; color: #276b2d; }
+.alert.aviso { background: #fff3cd; color: #7a5b00; }
+.acoes { display: flex; gap: 8px; align-items: center; }
+.acoes form { margin: 0; }
+.btn-sec { background: #6b7a90; }
+.btn-perigo { background: #b3392f; }
